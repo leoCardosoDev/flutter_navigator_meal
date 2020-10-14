@@ -7,7 +7,15 @@ class MealItem extends StatelessWidget {
   final Meal meal;
   const MealItem(this.meal);
   void _selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(AppRoutes.MEAL_DETAIL, arguments: meal);
+    Navigator.of(context)
+        .pushNamed(AppRoutes.MEAL_DETAIL, arguments: meal)
+        .then((result) {
+      if (result == null) {
+        print('Sem resultado');
+      } else {
+        print('O nome da refeição é $result');
+      }
+    });
   }
 
   @override
